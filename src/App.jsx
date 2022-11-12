@@ -1,4 +1,4 @@
-import { setState, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { QUESTIONS_NUMBER } from "./constants/constants";
 import Result from "./components/Result/Result";
 import GameBoard from "./components/gameBoard/GameBoard";
