@@ -1,0 +1,4 @@
+const QUESTIONS_NUMBER = 6 ; 
+
+
+export {QUESTIONS_NUMBER} 
