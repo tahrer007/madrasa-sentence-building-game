@@ -1,7 +1,6 @@
 //select chapter number
 import data from "../data/data.json";
 import { QUESTIONS_NUMBER } from "../constants/constants";
-import { getRandomInt } from "./helpers";
 const selectChapter = () => {};
 
 const selectQuestions = (chapterNum) => {
