@@ -20,27 +20,25 @@ const selectQuestions = (chapterNum) => {
 };
 
 const shuffleOptions = (arr1, arr2) => {
-  console.log(arr1, arr2);
   const shuffledArr = [...arr1, ...arr2]
     .sort(() => Math.random() - 0.5)
-    .map((word, index) => ({ ...word, id: Math.random() }));
+    .map((word, index) => ({ ...word, id: Math.random(), optionIndex: index }));
   return shuffledArr;
 };
 
 const createOptions = (question) => {
-  console.log("here", question);
   const correctArr = question.correct.map((word, index) => {
     return {
       orderIndex: index,
       word,
-      picked: false,
+      isPicked: false,
     };
   });
   const incorrectArr = question.incorrect.map((word) => {
     return {
       orderIndex: null,
       word,
-      picked: false,
+      isPicked: false,
     };
   });
   return shuffleOptions(correctArr, incorrectArr);

@@ -1,0 +1,58 @@
+.origin {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.destination {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: 100%;
+  margin: 0 0 10px;
+  min-height: 100px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 44px,
+    #263032 44px,
+    #263032 45px,
+    transparent 45px,
+    transparent 48px
+  );
+}
+
+.destination .word {
+  margin: 0 0.125rem 0.5rem;
+}
+
+.word-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 0.125rem 0.25rem;
+  border-radius: 0.5rem;
+  box-sizing: content-box;
+  padding-bottom: 0.125rem;
+  transition: 0.25s ease;
+}
+
+.word-container:empty {
+  background: lightgray;
+}
+
+.word {
+  all: unset;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid gray;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  user-select: none;
+  font-family: "Abraham-light";
+}
