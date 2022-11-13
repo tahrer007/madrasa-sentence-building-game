@@ -10,19 +10,31 @@ function Question({ question }) {
     setOptionsArr(createOptions(question));
   }, [question]);
   useEffect(() => {
-    console.log(optionsArr);
-  }, [optionsArr]);
+    console.log(optionsArr, answerArr);
+  }, [optionsArr, answerArr]);
 
-  const pickWord = (option) => {
+  const pickWord = (word) => {
     const pickedWord = {
-      ...option,
+      ...word,
       isPicked: true,
     };
     setAnswerArr((state) => [...state, pickedWord]);
     setOptionsArr((state) => [
-      ...state.filter((x) => x.id !== option.id),
+      ...state.filter((x) => x.id !== pickedWord.id),
       pickedWord,
     ]);
+  };
+
+  const takeBack = (word) => {
+    const returned = {
+      ...word,
+      isPicked: false,
+    };
+    setOptionsArr((state) => [
+      ...state.filter((x) => x.id !== returned.id),
+      returned,
+    ]);
+    setAnswerArr((state) => [...state.filter((x) => x.id !== returned.id)]);
   };
 
   return (
@@ -31,7 +43,11 @@ function Question({ question }) {
       <div className="destination">
         {answerArr
           ? answerArr.map((word) => (
-              <button key={word.id} className="word">
+              <button
+                key={word.id}
+                className="word"
+                onClick={() => takeBack(word)}
+              >
                 {word.word}
               </button>
             ))
