@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createOptions } from "../../utils/functions";
 import "./question.css";
-function Question({ question }) {
+function Question({ question, handleAnswer }) {
   const [optionsArr, setOptionsArr] = useState(null);
   const [answerArr, setAnswerArr] = useState([]);
 
@@ -10,8 +10,9 @@ function Question({ question }) {
     setOptionsArr(createOptions(question));
   }, [question]);
   useEffect(() => {
-    console.log(optionsArr, answerArr);
-  }, [optionsArr, answerArr]);
+    if (!answerArr) return;
+    handleAnswer(answerArr);
+  }, [answerArr,handleAnswer]);
 
   const pickWord = (word) => {
     const pickedWord = {

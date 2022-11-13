@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { selectQuestions } from "../../utils/functions";
 import Question from "../question/Question";
@@ -9,7 +9,16 @@ function GameBoard(add) {
   const [index, setIndex] = useState(0);
   const [question, setQuestion] = useState(selectedQuestions[index]);
   const [nextQuestion, setNextQuestion] = useState(false); // true : check , false : next !
-  const [result,setResult] = useState(0) ; 
+  const [result, setResult] = useState(0);
+  const [answer, setAnswer] = useState(null);
+  const handleAnswer = (answerArr) => {
+    console.log(answerArr);
+    setAnswer(answerArr);
+  };
+
+  useEffect(() => {
+    console.log(answer);
+  }, [answer]);
 
   const handleClick = (e) => {
     if (nextQuestion) {
@@ -25,8 +34,10 @@ function GameBoard(add) {
   return (
     <div>
       <h1> Game Board </h1>
-      <Question question={question} />
-      <button onClick={handleClick}>{nextQuestion ? "next" : "check"}</button>
+      <Question question={question} handleAnswer={handleAnswer} />
+      <button onClick={handleClick} disabled={!answer?.length && !nextQuestion}>
+        {nextQuestion ? "next" : "check"}
+      </button>
     </div>
   );
 }
