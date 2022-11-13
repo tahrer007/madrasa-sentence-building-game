@@ -4,22 +4,19 @@ import { QUESTIONS_NUMBER } from "../constants/constants";
 const selectChapter = () => {};
 
 const selectQuestions = (chapterNum) => {
-  //const selectedChapter = data[chapterNum];
-  const selectedChapter = data[1];
+  const selectedChapter = data[chapterNum];
+
   const length = selectedChapter.length;
   const indexesArr = [];
   const questionsArr = [];
-  /*while (indexesArr.length !== QUESTIONS_NUMBER) {
+  while (indexesArr.length !== QUESTIONS_NUMBER) {
     let random;
-   /* do {
+    do {
       random = Math.floor(Math.random() * (length - 0) + 0);
     } while (indexesArr.includes(random));
     indexesArr.push(random);
     questionsArr.push(selectedChapter[random]);
-    
-   
-  }*/
-  questionsArr.push(selectedChapter[3]);
+  }
   return questionsArr;
 };
 
