@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Sentence() {
+function Sentence({sentence}) {
   return (
-    <div>Sentence</div>
+    <div>{sentence}</div>
   )
 }
 
