@@ -4,25 +4,29 @@ import { QUESTIONS_NUMBER } from "../constants/constants";
 const selectChapter = () => {};
 
 const selectQuestions = (chapterNum) => {
-  const selectedChapter = data[chapterNum];
+  //const selectedChapter = data[chapterNum];
+  const selectedChapter = data[1];
   const length = selectedChapter.length;
   const indexesArr = [];
   const questionsArr = [];
-  while (indexesArr.length !== QUESTIONS_NUMBER) {
+  /*while (indexesArr.length !== QUESTIONS_NUMBER) {
     let random;
-    do {
+   /* do {
       random = Math.floor(Math.random() * (length - 0) + 0);
     } while (indexesArr.includes(random));
     indexesArr.push(random);
     questionsArr.push(selectedChapter[random]);
-  }
+    
+   
+  }*/
+  questionsArr.push(selectedChapter[3]);
   return questionsArr;
 };
 
 const shuffleOptions = (arr1, arr2) => {
   const shuffledArr = [...arr1, ...arr2]
     .sort(() => Math.random() - 0.5)
-    .map((word, index) => ({ ...word, id: Math.random(), optionIndex: index }));
+    .map((word, index) => ({ ...word, id: Math.random() }));
   return shuffledArr;
 };
 
@@ -43,14 +47,20 @@ const createOptions = (question) => {
   });
   return shuffleOptions(correctArr, incorrectArr);
 };
- 
-const checkAnswer =(answer , question)=>{
-  console.log(answer,question) ; 
-  console.log(question?.orders) ; 
 
- if(question?.orders) {
-
- }
-
-}
-export { selectChapter, selectQuestions, createOptions ,checkAnswer };
+const checkAnswer = (answer, question) => {
+  //some questions has orders and the without order
+  //with order
+  if (question?.orders) {
+    const userAnswer = answer.map((word) => word.orderIndex).join("");
+    const result = question.orders
+      .map((order) => order.join(""))
+      .includes(userAnswer);
+    return result;
+  }
+  //without order
+  const userAnswer = answer.map((x) => x.word).join("");
+  const result = question.correct.join("").includes(userAnswer);
+  return result;
+};
+export { selectChapter, selectQuestions, createOptions, checkAnswer };
