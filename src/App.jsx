@@ -5,11 +5,12 @@ import "./App.css";
 
 function App() {
   const [gameEnd, setGameEnd] = useState(false);
-  let totalPoints;
+  const [totalPoints, setTotalPoints] = useState(0);
 
   const gameResult = (score) => {
+    console.log(score);
     setGameEnd(true);
-    totalPoints = score;
+    setTotalPoints(score);
   };
 
   return (

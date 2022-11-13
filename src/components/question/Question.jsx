@@ -14,7 +14,6 @@ function Question({ question, handleAnswer  }) {
   }, [question]);
 
   useEffect(() => {
-    console.log(answerArr)
     handleAnswer(answerArr);
   }, [answerArr, handleAnswer]);
 

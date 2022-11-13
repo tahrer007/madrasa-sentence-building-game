@@ -5,7 +5,7 @@ import { selectQuestions, checkAnswer } from "utils/functions";
 import { QUESTIONS_NUMBER } from "constants/constants";
 const lesson = 1;
 
-function GameBoard({gameResult}) {
+function GameBoard({ gameResult }) {
   const selectedQuestions = selectQuestions(lesson);
   const [index, setIndex] = useState(0);
   const [question, setQuestion] = useState(selectedQuestions[index]);
@@ -18,13 +18,12 @@ function GameBoard({gameResult}) {
   });
 
   useEffect(() => {
-   
     setDisabled(!answer?.length && !nextQuestion);
   }, [answer, nextQuestion]);
-  //check if the game end 
+  //check if the game end
   useEffect(() => {
-    if(total?.answered) return ; 
-    if(total?.answered === QUESTIONS_NUMBER) gameResult (total.score)
+    if (!total?.answered) return;
+    if (total?.answered === QUESTIONS_NUMBER) gameResult(total.score);
   }, [gameResult, total?.answered, total.score]);
 
   const handleAnswer = (answerArr) => setAnswer(answerArr);
@@ -32,7 +31,7 @@ function GameBoard({gameResult}) {
     setDisabled(true);
     if (nextQuestion) {
       //move to the next question
-      setAnswer([])
+      setAnswer([]);
       setQuestion(selectedQuestions[index + 1]);
       setIndex(index + 1);
       //TODO:if finished move to results !!
