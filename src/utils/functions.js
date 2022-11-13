@@ -43,5 +43,11 @@ const createOptions = (question) => {
   });
   return shuffleOptions(correctArr, incorrectArr);
 };
+ 
+const checkAnswer =(answer , question)=>{
+  console.log(answer,question) ; 
 
-export { selectChapter, selectQuestions, createOptions };
+ // if(question?.orders)
+
+}
+export { selectChapter, selectQuestions, createOptions ,checkAnswer };
