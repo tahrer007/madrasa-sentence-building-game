@@ -46,8 +46,11 @@ const createOptions = (question) => {
  
 const checkAnswer =(answer , question)=>{
   console.log(answer,question) ; 
+  console.log(question?.orders) ; 
 
- // if(question?.orders)
+ if(question?.orders) {
+
+ }
 
 }
 export { selectChapter, selectQuestions, createOptions ,checkAnswer };
