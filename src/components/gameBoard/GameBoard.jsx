@@ -9,7 +9,7 @@ function GameBoard(add) {
   const [index, setIndex] = useState(0);
   const [question, setQuestion] = useState(selectedQuestions[index]);
   const [nextQuestion, setNextQuestion] = useState(false); // true : check , false : next !
-  const [result, setResult] = useState(0);
+  const [totalPoints, setTotalPoints] = useState(0);
   const [disabled, setDisabled] = useState(true);
   const [answer, setAnswer] = useState(null);
 
@@ -24,13 +24,15 @@ function GameBoard(add) {
       //move to the next question
       setQuestion(selectedQuestions[index + 1]);
       setIndex(index + 1);
-      setAnswer([]) ;
+      setAnswer([]);
       //TODO:if finished move to results !!
     } else {
       //check the answer !
-      checkAnswer(answer, question);
+      const result = checkAnswer(answer, question);
+      console.log(result);
+      if (result) setTotalPoints(totalPoints + 1);
     }
-    
+
     setNextQuestion(!nextQuestion);
   };
   return (
