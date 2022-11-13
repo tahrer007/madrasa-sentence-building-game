@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { createOptions } from "../../utils/functions";
+import { createOptions } from "utils/functions";
 import "./question.css";
-function Question({ question, handleAnswer }) {
-  const [optionsArr, setOptionsArr] = useState(null);
+
+function Question({ question, handleAnswer  }) {
   const [answerArr, setAnswerArr] = useState([]);
+  const [optionsArr, setOptionsArr] = useState(null);
+ 
 
   useEffect(() => {
     if (!question) return;
     setOptionsArr(createOptions(question));
+    setAnswerArr([]);
   }, [question]);
+
   useEffect(() => {
-    if (!answerArr) return;
+    console.log(answerArr)
     handleAnswer(answerArr);
-  }, [answerArr,handleAnswer]);
+  }, [answerArr, handleAnswer]);
 
   const pickWord = (word) => {
     const pickedWord = {

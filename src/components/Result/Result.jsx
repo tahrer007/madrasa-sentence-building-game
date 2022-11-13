@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Result() {
+function Result({totalPoints}) {
   return (
-    <div>Result</div>
+    <div>Result : {totalPoints}</div>
   )
 }
 
