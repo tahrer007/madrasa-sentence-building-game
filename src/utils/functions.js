@@ -11,11 +11,12 @@ const selectQuestions = (chapterNum) => {
   const questionsArr = [];
   while (indexesArr.length !== QUESTIONS_NUMBER) {
     let random;
-    do {
+    /*do {
       random = Math.floor(Math.random() * (length - 0) + 0);
-    } while (indexesArr.includes(random));
-    indexesArr.push(random);
-    questionsArr.push(selectedChapter[random]);
+    } while (indexesArr.includes(random));*/
+    // indexesArr.push(random);
+    indexesArr.push(9);
+    questionsArr.push(selectedChapter[9]);
   }
   return questionsArr;
 };
@@ -46,6 +47,8 @@ const createOptions = (question) => {
 };
 
 const checkAnswer = (answer, question) => {
+  console.log(answer);
+  console.log(question);
   //some questions has orders and the without order
   //with order
   if (question?.orders) {
@@ -57,7 +60,7 @@ const checkAnswer = (answer, question) => {
   }
   //without order
   const userAnswer = answer.map((x) => x.word).join("");
-  const result = question.correct.join("").includes(userAnswer);
-  return result;
+  const result = question.correct.join("");
+  return result === userAnswer;
 };
 export { selectChapter, selectQuestions, createOptions, checkAnswer };

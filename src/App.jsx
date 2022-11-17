@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import Result from "./components/Result/Result";
 import GameBoard from "./components/gameBoard/GameBoard";
-import "./App.css";
+import "./app.scss";
 
 function App() {
   const [gameEnd, setGameEnd] = useState(false);
   const [totalPoints, setTotalPoints] = useState(0);
 
   const gameResult = (score) => {
-    console.log(score);
     setGameEnd(true);
     setTotalPoints(score);
   };

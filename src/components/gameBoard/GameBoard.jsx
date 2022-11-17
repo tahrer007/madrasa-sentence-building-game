@@ -20,7 +20,6 @@ function GameBoard({ gameResult }) {
 
   useEffect(() => {
     setDisabled(!answer?.length && !nextQuestion);
-    console.log(answer)
   }, [answer, nextQuestion]);
   //check if the game end
   useEffect(() => {
@@ -37,10 +36,12 @@ function GameBoard({ gameResult }) {
       setQuestion(selectedQuestions[index + 1]);
       setIndex(index + 1);
       setIncorrect(false);
-      //TODO:if finished move to results !!
     } else {
       //check the answer !
       const result = checkAnswer(answer, question);
+      //console.log(answer) 
+      //console.log(question) 
+     // console.log(result)
       if (result) {
         setTotal({
           score: total.score + 1,
@@ -59,7 +60,6 @@ function GameBoard({ gameResult }) {
   };
   return (
     <div>
-      <h1> Game Board </h1>
       <Question question={question} handleAnswer={handleAnswer} />
       <button onClick={handleClick} disabled={disabled}>
         {nextQuestion ? "next" : "check"}

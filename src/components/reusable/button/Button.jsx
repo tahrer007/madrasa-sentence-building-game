@@ -6,7 +6,7 @@ import React from 'react' ;
 
 //useMEMEO 
 
-function Button({status}) {
+function Button({handleOnClick ,text}) {
    
   return (
     <button> check answer!</button>
