@@ -16,9 +16,11 @@ function GameBoard({ gameResult }) {
     score: 0,
     answered: 0,
   });
+  const [incorrect, setIncorrect] = useState(false);
 
   useEffect(() => {
     setDisabled(!answer?.length && !nextQuestion);
+    console.log(answer)
   }, [answer, nextQuestion]);
   //check if the game end
   useEffect(() => {
@@ -34,6 +36,7 @@ function GameBoard({ gameResult }) {
       setAnswer([]);
       setQuestion(selectedQuestions[index + 1]);
       setIndex(index + 1);
+      setIncorrect(false);
       //TODO:if finished move to results !!
     } else {
       //check the answer !
@@ -48,6 +51,7 @@ function GameBoard({ gameResult }) {
           score: total.score,
           answered: total.answered + 1,
         });
+        setIncorrect(true);
       }
     }
 
@@ -60,6 +64,9 @@ function GameBoard({ gameResult }) {
       <button onClick={handleClick} disabled={disabled}>
         {nextQuestion ? "next" : "check"}
       </button>
+      {answer?.length && incorrect ? (
+        <div className="correctAnswer">{question.answer}</div>
+      ) : null}
     </div>
   );
 }
