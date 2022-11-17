@@ -12,7 +12,7 @@ const selectQuestions = (chapterNum) => {
     do {
       random = Math.floor(Math.random() * (length - 0) + 0);
     } while (indexesArr.includes(random));
-     indexesArr.push(random);
+    indexesArr.push(random);
     questionsArr.push(selectedChapter[random]);
   }
   return questionsArr;
@@ -44,8 +44,6 @@ const createOptions = (question) => {
 };
 
 const checkAnswer = (answer, question) => {
-  console.log(answer);
-  console.log(question);
   //some questions has orders and the without order
   //with order
   if (question?.orders) {
