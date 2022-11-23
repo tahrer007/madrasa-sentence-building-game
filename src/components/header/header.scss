@@ -4,5 +4,16 @@ header {
   align-items: center;
 
   background-color: green;
+  text-align: center;
+
+  .time-container {
+    display: flex;
+    justify-content: right;
+    font-family: "Abraham";
+    font-size: 32px;
+    user-select: none;
+    direction: ltr;
+  }
+  
   
 }

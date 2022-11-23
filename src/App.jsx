@@ -12,12 +12,12 @@ function App() {
     setGameEnd(true);
     setTotalPoints(score);
   };
-
+  const playSound =(mute) => console.log(mute) ;
   return (
     <div className="app-container">
       {/* POP UP */}
       <section>
-        <Header />
+        <Header  playSound={playSound} />
 
         {gameEnd ? (
           <Result totalPoints={totalPoints} />
