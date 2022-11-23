@@ -7,6 +7,16 @@ src: url("fonts/abraham-light.otf");
   font-family: "Abraham";
   src: url("fonts/abraham-regular.otf");
 }*/
+@import-normalize; /* bring in normalize.css styles */
+
+@font-face {
+  font-family: "Abraham";
+  src: url("assets/fonts/abraham-regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Abraham-light";
+  src: url("assets/fonts/abraham-light.otf") format("opentype");
+}
 
 body * {
   direction: rtl;
