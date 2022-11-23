@@ -6,7 +6,7 @@ import { playSound } from "utils/playSound";
 
 import useGame from "hooks/useGame";
 
-function GameBoard({ gameResult ,progress ,mute}) {
+function GameBoard({ gameResult, progress, mute }) {
   const {
     selectedQuestions,
     index,
@@ -43,18 +43,19 @@ function GameBoard({ gameResult ,progress ,mute}) {
       setQuestion(selectedQuestions[index + 1]);
       setIndex(index + 1);
       setIncorrect(false);
-     
     } else {
-      const result = checkAnswer(answer, question);
       progress();
+      const result = checkAnswer(answer, question);
+
+      if (!mute && answer.audio) playSound(answer.audio);
       if (result) {
-        if(!mute) playSound("correct") ;
+        if (!mute) playSound("correct");
         setTotal({
           score: total.score + 1,
           answered: total.answered + 1,
         });
       } else {
-        if(!mute) playSound("fail") ;
+        if (!mute) playSound("fail");
         setTotal({
           score: total.score,
           answered: total.answered + 1,
@@ -67,12 +68,17 @@ function GameBoard({ gameResult ,progress ,mute}) {
   };
   return (
     <>
-      <Question question={question} handleAnswer={handleAnswer} mute={mute} nextQuestion={nextQuestion}/>
+      <Question
+        question={question}
+        handleAnswer={handleAnswer}
+        mute={mute}
+        nextQuestion={nextQuestion}
+      />
       <button onClick={handleClick} disabled={disabled} className={"buttons"}>
         {nextQuestion ? "המשך" : "בדיקה"}
       </button>
       {answer?.length && incorrect ? (
-        <div className="correctAnswer">{question.answer}</div>
+        <div className="answer"> תשובה נכונה: {question.answer} </div>
       ) : null}
     </>
   );
