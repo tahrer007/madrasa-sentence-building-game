@@ -19,7 +19,7 @@ function App() {
     <div className="app-container">
       {/* POP UP */}
       <section>
-        <Header playSound={playSound} progress={counter} />
+        <Header playSound={playSound} progress={counter} gameEnd={gameEnd} />
 
         {gameEnd ? (
           <Result totalPoints={totalPoints} />

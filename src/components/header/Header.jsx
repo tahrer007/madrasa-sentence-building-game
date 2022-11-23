@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeHigh, faVolumeMute } from "@fortawesome/free-solid-svg-icons";
 import { QUESTIONS_NUMBER } from "constants/constants";
@@ -6,14 +6,21 @@ import ProgressBar from "@ramonak/react-progress-bar";
 
 import "./header.scss";
 
-function Header({ playSound, progress }) {
-  const [time, setTime] = useState(null);
+function Header({ playSound, progress ,gameEnd }) {
+  const [timer, setTimer] = useState(null);
+  const [isActive, setIsActive] = useState(false) ;
   const [mute, setMute] = useState(false);
-  //const [progress,setProgress] = useState(0);
+  const countRef = useRef(null) ;
+
+  useEffect(() => {
+    
+  }, []);
 
   useEffect(() => {
     playSound(mute);
   }, [mute, playSound]);
+
+ 
 
 
   return (
@@ -21,8 +28,8 @@ function Header({ playSound, progress }) {
       <div className="time-container">time</div>
       <div className="progress-container">
         <ProgressBar
-          completed={progress / QUESTIONS_NUMBER}
-          maxCompleted={1}
+          completed={progress}
+          maxCompleted={QUESTIONS_NUMBER}
           className="wrapper"
           barContainerClassName="container"
           bgColor="#7ec900"
