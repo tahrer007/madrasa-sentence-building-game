@@ -55,4 +55,9 @@
   font-weight: 500;
   user-select: none;
   font-family: "Abraham-light";
+  &:disabled {
+    cursor: auto;
+    
+  }
+
 }

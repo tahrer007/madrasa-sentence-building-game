@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { createOptions } from "utils/functions";
 import { playSound } from "utils/playSound";
-import "./question.css";
+import "./question.scss";
 
-function Question({ question, handleAnswer, mute }) {
+function Question({ question, handleAnswer, mute ,nextQuestion}) {
   const [answerArr, setAnswerArr] = useState([]);
   const [optionsArr, setOptionsArr] = useState(null);
 
@@ -54,6 +54,7 @@ function Question({ question, handleAnswer, mute }) {
                 key={word.id}
                 className="word"
                 onClick={() => takeBack(word)}
+                disabled={nextQuestion}
               >
                 {word.word}
               </button>
@@ -65,7 +66,7 @@ function Question({ question, handleAnswer, mute }) {
           ? optionsArr.map((word) => (
               <div key={word.id} className="word-container">
                 {!word?.isPicked ? (
-                  <button className="word" onClick={() => pickWord(word)}>
+                  <button className="word" disabled={nextQuestion}onClick={() => pickWord(word)}>
                     {word.word}
                   </button>
                 ) : null}

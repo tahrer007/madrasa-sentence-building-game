@@ -22,26 +22,20 @@
 
   .buttons {
     width: 80%;
-  display: block;
-  border: 0;
-  border-radius: 20px;
-  background: #5f91c9;
-  color: white;
-  cursor: pointer;
-  padding: 6px 0;
-  margin: auto;
-  margin-top: 20px;
-  font-size: 25px;
+    display: block;
+    border: 0;
+    border-radius: 20px;
+    background: #5f91c9;
+    color: white;
+    cursor: pointer;
+    padding: 6px 0;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 25px;
 
-   &:disabled{
-    cursor: auto;
-    background: rgba(95, 145, 201, 0.54);
+    &:disabled {
+      cursor: auto;
+      background: rgba(95, 145, 201, 0.54);
+    }
   }
-
-  }
-
-  
-
-
 }
-
