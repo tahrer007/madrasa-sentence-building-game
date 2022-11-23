@@ -5,7 +5,7 @@ import { QUESTIONS_NUMBER } from "constants/constants";
 
 import useGame from "hooks/useGame";
 
-function GameBoard({ gameResult ,progress}) {
+function GameBoard({ gameResult ,progress ,mute}) {
   const {
     selectedQuestions,
     index,
@@ -64,7 +64,7 @@ function GameBoard({ gameResult ,progress}) {
   };
   return (
     <>
-      <Question question={question} handleAnswer={handleAnswer} />
+      <Question question={question} handleAnswer={handleAnswer} mute={mute}/>
       <button onClick={handleClick} disabled={disabled}>
         {nextQuestion ? "next" : "check"}
       </button>

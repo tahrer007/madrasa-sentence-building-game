@@ -8,12 +8,13 @@ function App() {
   const [gameEnd, setGameEnd] = useState(false);
   const [totalPoints, setTotalPoints] = useState(0);
   const [counter, setCounter] = useState(0);
+  const [mute,setMute] = useState(false) ;
 
   const gameResult = (score) => {
     setGameEnd(true);
     setTotalPoints(score);
   };
-  const playSound = (mute) => console.log(mute);
+  const playSound = (mute) => setMute(mute);
   const progress = () => setCounter(counter + 1);
   return (
     <div className="app-container">
@@ -24,7 +25,7 @@ function App() {
         {gameEnd ? (
           <Result totalPoints={totalPoints} />
         ) : (
-          <GameBoard gameResult={gameResult} progress={progress} />
+          <GameBoard gameResult={gameResult} progress={progress} mute={mute} />
         )}
       </section>
     </div>

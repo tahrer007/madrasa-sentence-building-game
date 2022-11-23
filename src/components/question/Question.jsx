@@ -3,7 +3,7 @@ import { createOptions } from "utils/functions";
 import { playSound } from "utils/playSound";
 import "./question.css";
 
-function Question({ question, handleAnswer }) {
+function Question({ question, handleAnswer, mute }) {
   const [answerArr, setAnswerArr] = useState([]);
   const [optionsArr, setOptionsArr] = useState(null);
 
@@ -28,7 +28,7 @@ function Question({ question, handleAnswer }) {
       pickedWord,
     ]);
 
-    playSound("flip");
+    if (!mute) playSound("flip");
   };
 
   const takeBack = (word) => {
@@ -41,7 +41,7 @@ function Question({ question, handleAnswer }) {
       returned,
     ]);
     setAnswerArr((state) => [...state.filter((x) => x.id !== returned.id)]);
-    playSound("flip");
+    if (!mute) playSound("flip");
   };
 
   return (
