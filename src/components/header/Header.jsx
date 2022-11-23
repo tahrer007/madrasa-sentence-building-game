@@ -15,9 +15,6 @@ function Header({ playSound, progress }) {
     playSound(mute);
   }, [mute, playSound]);
 
-  useEffect(() => {
-    console.log(progress);
-  }, [progress]);
 
   return (
     <header>
