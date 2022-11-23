@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { createOptions } from "utils/functions";
+import { playSound } from "utils/playSound";
 import "./question.css";
 
-function Question({ question, handleAnswer  }) {
+function Question({ question, handleAnswer }) {
   const [answerArr, setAnswerArr] = useState([]);
   const [optionsArr, setOptionsArr] = useState(null);
- 
 
   useEffect(() => {
     if (!question) return;
@@ -27,6 +27,8 @@ function Question({ question, handleAnswer  }) {
       ...state.filter((x) => x.id !== pickedWord.id),
       pickedWord,
     ]);
+
+    playSound("flip");
   };
 
   const takeBack = (word) => {
@@ -39,6 +41,7 @@ function Question({ question, handleAnswer  }) {
       returned,
     ]);
     setAnswerArr((state) => [...state.filter((x) => x.id !== returned.id)]);
+    playSound("flip");
   };
 
   return (
