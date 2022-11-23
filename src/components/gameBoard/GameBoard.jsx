@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Question from "components/question/Question";
 import { checkAnswer } from "utils/functions";
 import { QUESTIONS_NUMBER } from "constants/constants";
+import { playSound } from "utils/playSound";
 
 import useGame from "hooks/useGame";
 
@@ -47,11 +48,13 @@ function GameBoard({ gameResult ,progress ,mute}) {
       const result = checkAnswer(answer, question);
       progress();
       if (result) {
+        if(!mute) playSound("correct") ;
         setTotal({
           score: total.score + 1,
           answered: total.answered + 1,
         });
       } else {
+        if(!mute) playSound("fail") ;
         setTotal({
           score: total.score,
           answered: total.answered + 1,
