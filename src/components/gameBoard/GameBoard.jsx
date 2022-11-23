@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import Question from "components/question/Question";
-import {checkAnswer } from "utils/functions";
+import { checkAnswer } from "utils/functions";
 import { QUESTIONS_NUMBER } from "constants/constants";
 
 import useGame from "hooks/useGame";
 
-function GameBoard({gameResult}) {
+function GameBoard({ gameResult }) {
   const {
     selectedQuestions,
     index,
@@ -61,7 +61,7 @@ function GameBoard({gameResult}) {
     setNextQuestion(!nextQuestion);
   };
   return (
-    <div>
+    <>
       <Question question={question} handleAnswer={handleAnswer} />
       <button onClick={handleClick} disabled={disabled}>
         {nextQuestion ? "next" : "check"}
@@ -69,7 +69,7 @@ function GameBoard({gameResult}) {
       {answer?.length && incorrect ? (
         <div className="correctAnswer">{question.answer}</div>
       ) : null}
-    </div>
+    </>
   );
 }
 

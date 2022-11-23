@@ -18,7 +18,7 @@ src: url("fonts/abraham-light.otf");
   src: url("assets/fonts/abraham-light.otf") format("opentype");
 }
 
-body * {
+ * {
   direction: rtl;
   font-family: "Abraham-light", sans-serif;
   box-sizing: border-box;
