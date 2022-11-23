@@ -68,8 +68,8 @@ function GameBoard({ gameResult ,progress ,mute}) {
   return (
     <>
       <Question question={question} handleAnswer={handleAnswer} mute={mute}/>
-      <button onClick={handleClick} disabled={disabled}>
-        {nextQuestion ? "next" : "check"}
+      <button onClick={handleClick} disabled={disabled} className={"buttons"}>
+        {nextQuestion ? "המשך" : "בדיקה"}
       </button>
       {answer?.length && incorrect ? (
         <div className="correctAnswer">{question.answer}</div>
