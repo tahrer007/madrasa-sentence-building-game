@@ -5,7 +5,7 @@ import { QUESTIONS_NUMBER } from "constants/constants";
 
 import useGame from "hooks/useGame";
 
-function GameBoard({ gameResult }) {
+function GameBoard({ gameResult ,progress}) {
   const {
     selectedQuestions,
     index,
@@ -42,8 +42,10 @@ function GameBoard({ gameResult }) {
       setQuestion(selectedQuestions[index + 1]);
       setIndex(index + 1);
       setIncorrect(false);
+     
     } else {
       const result = checkAnswer(answer, question);
+      progress();
       if (result) {
         setTotal({
           score: total.score + 1,

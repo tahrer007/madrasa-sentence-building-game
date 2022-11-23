@@ -7,22 +7,24 @@ import "./app.scss";
 function App() {
   const [gameEnd, setGameEnd] = useState(false);
   const [totalPoints, setTotalPoints] = useState(0);
+  const [counter, setCounter] = useState(0);
 
   const gameResult = (score) => {
     setGameEnd(true);
     setTotalPoints(score);
   };
-  const playSound =(mute) => console.log(mute) ;
+  const playSound = (mute) => console.log(mute);
+  const progress = () => setCounter(counter + 1);
   return (
     <div className="app-container">
       {/* POP UP */}
       <section>
-        <Header  playSound={playSound} />
+        <Header playSound={playSound} progress={counter} />
 
         {gameEnd ? (
           <Result totalPoints={totalPoints} />
         ) : (
-          <GameBoard gameResult={gameResult} />
+          <GameBoard gameResult={gameResult} progress={progress} />
         )}
       </section>
     </div>
