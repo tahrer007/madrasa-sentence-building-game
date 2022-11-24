@@ -6,16 +6,18 @@ import ProgressBar from "@ramonak/react-progress-bar";
 
 import "./header.scss";
 
-function Header({ playSound, progress, gameEnd }) {
+function Header({ playSound, progress, gameEnd, newGame }) {
   const [timer, setTimer] = useState(null);
   const [isActive, setIsActive] = useState(false);
   const [mute, setMute] = useState(false);
   const increment = useRef(null);
   useEffect(() => {
-    increment.current = setInterval(() => {
-      setTimer((timer) => timer + 1);
-    }, 1000);
-  }, []);
+    if (newGame) {
+      increment.current = setInterval(() => {
+        setTimer((timer) => timer + 1);
+      }, 1000);
+    }
+  }, [newGame]);
 
   useEffect(() => {
     console.log(gameEnd);

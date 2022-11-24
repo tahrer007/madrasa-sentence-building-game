@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "components/header/Header";
+import PopUp from "components/popup/PopUp";
 import Result from "./components/Result/Result";
 import GameBoard from "./components/gameBoard/GameBoard";
 import "./app.scss";
 
 function App() {
+  const [newGame,setnewGame] = useState(false) ; 
   const [gameEnd, setGameEnd] = useState(false);
   const [totalPoints, setTotalPoints] = useState(0);
   const [counter, setCounter] = useState(0);
-  const [mute,setMute] = useState(false) ;
+  const [mute, setMute] = useState(false);
 
   const gameResult = (score) => {
     setGameEnd(true);
@@ -16,11 +18,12 @@ function App() {
   };
   const playSound = (mute) => setMute(mute);
   const progress = () => setCounter(counter + 1);
+  const startGame =()=>setnewGame(true)
   return (
     <div className="app-container">
-      {/* POP UP */}
+      <PopUp startGame={startGame}/>
       <section>
-        <Header playSound={playSound} progress={counter} gameEnd={gameEnd} />
+        <Header playSound={playSound} progress={counter} gameEnd={gameEnd} newGame={newGame}/>
 
         {gameEnd ? (
           <Result totalPoints={totalPoints} />
