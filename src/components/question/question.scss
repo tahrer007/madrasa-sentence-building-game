@@ -1,3 +1,8 @@
+.question-container {
+  width: 100%;
+}
+
+
 .origin {
   display: flex;
   flex-flow: row wrap;
@@ -57,7 +62,16 @@
   font-family: "Abraham-light";
   &:disabled {
     cursor: auto;
-    
   }
+}
 
+.picked {
+  background-color: lightgray;
+  box-sizing: border-box;
+  padding: 0.2rem 0.5rem;
+  cursor: none;
+  font-weight: 500;
+  font-family: "Abraham-light";
+  border-radius: 0.5rem;
+  border: 1px solid gray;
 }

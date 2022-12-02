@@ -45,8 +45,9 @@ function Question({ question, handleAnswer, mute ,nextQuestion}) {
   };
 
   return (
-    <div>
-      <div>{question?.sentence}</div>
+    //TODO:TO RETURN TO THE SAME ORDER !!! 
+    <div className="question-container">
+      <h3>{question?.sentence}</h3>
       <div className="destination">
         {answerArr
           ? answerArr.map((word) => (
@@ -65,11 +66,15 @@ function Question({ question, handleAnswer, mute ,nextQuestion}) {
         {optionsArr
           ? optionsArr.map((word) => (
               <div key={word.id} className="word-container">
-                {!word?.isPicked ? (
+                {word?.isPicked ? (
+                  <button className="picked">
+                    {word.word}
+                  </button>
+                ) : (
                   <button className="word" disabled={nextQuestion}onClick={() => pickWord(word)}>
                     {word.word}
                   </button>
-                ) : null}
+                )}
               </div>
             ))
           : null}
