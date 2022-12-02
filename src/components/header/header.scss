@@ -1,22 +1,14 @@
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  //background-color: rgba(128, 128, 128, 0.254);
-  text-align: center;
-
-  .time-container {
-    display: flex;
-    justify-content: right;
-    font-family: "Abraham";
-    font-size: 32px;
-    user-select: none;
-    direction: ltr;
+  .top-buttons-container {
+    justify-self: left;
   }
 
   .progress-container {
     flex: 3;
     margin: 0 6px;
+    height: 10px;
+    overflow: hidden;
+
     .wrapper {
       height: 10px;
     }
@@ -24,5 +16,14 @@ header {
     .container {
       background-color: lightgray;
     }
+  }
+
+  .time-container {
+    display: flex;
+    justify-content: right;
+    font-family: "Abraham";
+    font-size: 22px;
+    user-select: none;
+    direction: ltr;
   }
 }

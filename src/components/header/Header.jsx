@@ -42,19 +42,21 @@ function Header({ playSound, progress, gameEnd, newGame }) {
       <div className="time-container">{formatTime()}</div>
       <div className="progress-container">
         <ProgressBar
-          completed={progress}
-          maxCompleted={QUESTIONS_NUMBER}
-          className="wrapper"
-          barContainerClassName="container"
-          bgColor="#7ec900"
-          customLabel=" "
+         completed={progress}
+         maxCompleted={QUESTIONS_NUMBER}
+         className="wrapper"
+         barContainerClassName="container"
+         bgColor="#7ec900"
+         customLabel=" "
+        
+
         />
       </div>
       <div className="top-buttons-container" onClick={() => setMute(!mute)}>
         {mute ? (
-          <FontAwesomeIcon icon={faVolumeMute} />
+          <FontAwesomeIcon icon={faVolumeMute} size="2x" />
         ) : (
-          <FontAwesomeIcon icon={faVolumeHigh} />
+          <FontAwesomeIcon icon={faVolumeHigh} size="2x" />
         )}
       </div>
     </header>

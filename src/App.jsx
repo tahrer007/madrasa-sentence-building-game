@@ -6,7 +6,7 @@ import GameBoard from "./components/gameBoard/GameBoard";
 import "./app.scss";
 
 function App() {
-  const [newGame,setnewGame] = useState(false) ; 
+  const [newGame, setnewGame] = useState(false);
   const [gameEnd, setGameEnd] = useState(false);
   const [totalPoints, setTotalPoints] = useState(0);
   const [counter, setCounter] = useState(0);
@@ -18,12 +18,18 @@ function App() {
   };
   const playSound = (mute) => setMute(mute);
   const progress = () => setCounter(counter + 1);
-  const startGame =()=>setnewGame(true)
+  const startGame = () => setnewGame(true);
   return (
     <div className="app-container">
-      <PopUp startGame={startGame}/>
-      <section>
-        <Header playSound={playSound} progress={counter} gameEnd={gameEnd} newGame={newGame}/>
+      <PopUp startGame={startGame} />
+
+      <section className="main-section">
+        <Header
+          playSound={playSound}
+          progress={counter}
+          gameEnd={gameEnd}
+          newGame={newGame}
+        />
 
         {gameEnd ? (
           <Result totalPoints={totalPoints} />
