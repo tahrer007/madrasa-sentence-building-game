@@ -17,6 +17,11 @@ function Question({ question, handleAnswer, mute ,nextQuestion}) {
     handleAnswer(answerArr);
   }, [answerArr, handleAnswer]);
 
+
+  useEffect(() => {
+    console.log(optionsArr) ; 
+  }, [optionsArr]);
+
   const pickWord = (word) => {
     const pickedWord = {
       ...word,
@@ -68,7 +73,7 @@ function Question({ question, handleAnswer, mute ,nextQuestion}) {
               <div key={word.id} className="word-container">
                 {word?.isPicked ? (
                   <button className="picked">
-                    {word.word}
+                  <span> {word.word} </span>  
                   </button>
                 ) : (
                   <button className="word" disabled={nextQuestion}onClick={() => pickWord(word)}>
