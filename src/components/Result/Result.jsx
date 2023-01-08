@@ -8,7 +8,9 @@ function Result({ totalPoints ,again }) {
   const win = totalPoints > QUESTIONS_NUMBER / 2;
   const {text, imgSrc} = win ? RESULT_DATA.win : RESULT_DATA.lose ;
 useEffect(() => {
-  playSound(win ? "correct" : "lose")
+
+  console.log(win)
+  playSound(win ? "applause" : "lose")
 }, [])
 
 const handleClick = () => again() ; 
