@@ -3,7 +3,7 @@ import { createOptions } from "utils/functions";
 import { playSound } from "utils/playSound";
 import "./question.scss";
 
-function Question({ question, handleAnswer, mute ,nextQuestion}) {
+function Question({ question, handleAnswer, mute, nextQuestion }) {
   const [answerArr, setAnswerArr] = useState([]);
   const [optionsArr, setOptionsArr] = useState(null);
 
@@ -17,9 +17,8 @@ function Question({ question, handleAnswer, mute ,nextQuestion}) {
     handleAnswer(answerArr);
   }, [answerArr, handleAnswer]);
 
-
   useEffect(() => {
-    console.log(optionsArr) ; 
+    console.log(optionsArr);
   }, [optionsArr]);
 
   const pickWord = (word) => {
@@ -28,10 +27,11 @@ function Question({ question, handleAnswer, mute ,nextQuestion}) {
       isPicked: true,
     };
     setAnswerArr((state) => [...state, pickedWord]);
-    setOptionsArr((state) => [
-      ...state.filter((x) => x.id !== pickedWord.id),
-      pickedWord,
-    ]);
+    setOptionsArr((state) =>
+      [...state.filter((x) => x.id !== pickedWord.id), pickedWord].sort(
+        (a, b) => a.id - b.id
+      )
+    );
 
     if (!mute) playSound("flip");
   };
@@ -41,16 +41,17 @@ function Question({ question, handleAnswer, mute ,nextQuestion}) {
       ...word,
       isPicked: false,
     };
-    setOptionsArr((state) => [
-      ...state.filter((x) => x.id !== returned.id),
-      returned,
-    ]);
+    setOptionsArr((state) =>
+      [...state.filter((x) => x.id !== returned.id), returned].sort(
+        (a, b) => a.id - b.id
+      )
+    );
     setAnswerArr((state) => [...state.filter((x) => x.id !== returned.id)]);
     if (!mute) playSound("flip");
   };
 
   return (
-    //TODO:TO RETURN TO THE SAME ORDER !!! 
+    //TODO:TO RETURN TO THE SAME ORDER !!!
     <div className="question-container">
       <h3>{question?.sentence}</h3>
       <div className="destination">
@@ -73,10 +74,14 @@ function Question({ question, handleAnswer, mute ,nextQuestion}) {
               <div key={word.id} className="word-container">
                 {word?.isPicked ? (
                   <button className="picked">
-                  <span> {word.word} </span>  
+                    <span> {word.word} </span>
                   </button>
                 ) : (
-                  <button className="word" disabled={nextQuestion}onClick={() => pickWord(word)}>
+                  <button
+                    className="word"
+                    disabled={nextQuestion}
+                    onClick={() => pickWord(word)}
+                  >
                     {word.word}
                   </button>
                 )}

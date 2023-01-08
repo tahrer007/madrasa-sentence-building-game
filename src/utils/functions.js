@@ -22,7 +22,7 @@ const shuffleOptions = (arr1, arr2) => {
   const shuffledArr = [...arr1, ...arr2]
     .sort(() => Math.random() - 0.5)
     .map((word, index) => ({ ...word, id: Math.random() }));
-  return shuffledArr;
+  return shuffledArr.sort((a,b)=> a.id -b.id);
 };
 
 const createOptions = (question) => {
