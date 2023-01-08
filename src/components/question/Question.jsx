@@ -17,10 +17,6 @@ function Question({ question, handleAnswer, mute, nextQuestion }) {
     handleAnswer(answerArr);
   }, [answerArr, handleAnswer]);
 
-  useEffect(() => {
-    console.log(optionsArr);
-  }, [optionsArr]);
-
   const pickWord = (word) => {
     const pickedWord = {
       ...word,

@@ -80,8 +80,10 @@ function GameBoard({ gameResult, progress, mute }) {
         {nextQuestion ? "המשך" : "בדיקה"}
       </button>
       {answer?.length && incorrect ? (
-        <div className="answer"> תשובה נכונה: {question.answer} </div>
+        <div className="answer"> תשובה נכונה: {question.answer} 👎 </div>
       ) : null}
+
+      {answer?.length && !incorrect &&nextQuestion ? <div className="answer"> 👍 </div> : null}
     </>
   );
 }
