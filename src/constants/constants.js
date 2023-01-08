@@ -3,7 +3,7 @@ const QUESTIONS_NUMBER = 6;
 const RESULT_DATA = {
   win: {
     imgSrc:
-      "https://upload.wikimedia.org/wikipedia/commons/3/33/Twemoji12_1f627.svg",
+      "https://upload.wikimedia.org/wikipedia/commons/2/2e/Oxygen480-emotes-face-smile-big.svg",
     text: "כל אלאחתראם! כל הכבוד!",
   },
 
